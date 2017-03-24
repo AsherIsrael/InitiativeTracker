@@ -1,0 +1,15 @@
+.order-list {
+    display: inline-block;
+}
+
+.list-component {
+    display: inline-block;
+}
+
+.red {
+    color: red;
+}
+
+.large-text {
+    font-size: 1.5em;
+}

@@ -1,0 +1,37 @@
+<template>
+    <h1>Track that Initiative!</h1>
+
+    <form submit.trigger="addEntity()">
+        Name: <input type="text" value.bind="entityName">
+        Race: <input type="text" value.bind="entityRace">
+        Class: <input type="text" value.bind="entityClass">
+        Initiative: <input type="number" step="1" min="0" value.bind="entityInitiative">
+        <button type="submit">Add Entity</button>
+    </form>
+    <button click.trigger="adjustTurn(1)">Next Turn</button>
+    <button click.trigger="adjustTurn(-1)">Previous Turn</button>
+    <div class="row">
+        <div class="order-list seven columns">
+            <ol>
+                <li repeat.for="entity of entities">
+                        <span class="">
+                        ${entity.display()}
+                        </span>
+                        <button class="" click.trigger="removeEntity()">Remove from combat</button>
+                        <button class="" click.trigger="delayEntity(entity)">Delay</button>
+                        <span class="red large-text" if.bind="entities.indexOf(entity) == turnIndicator"> &#9876 </span>
+                </li>
+            </ol>
+        </div>
+        <div class="order-list five columns">
+            <ul>
+                <li repeat.for="entity of delayedEntities">
+                    <span class="">
+                        ${entity.display()}
+                    </span>
+                    <button class="" click.trigger="returnEntity(entity)">Return to Initiative</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
